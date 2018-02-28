@@ -21,8 +21,12 @@ int main(int argc, char** argv) {
 
 
 
-   
+    simo::field f;
     
+    for (int i = 0; i < f.size(); i++) {
+        std::cout << f[i];
+    }
+
 
     return 0;
 }

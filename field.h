@@ -27,10 +27,12 @@ public:
 
 namespace simo {
     
-class field  {
+class field  : public std::vector<simo::cell> {
 public:
-    std::vector<simo::cell> cells;
-    field()  {}
+    
+    typedef std::vector<simo::face>::iterator field_iterator;
+    
+    field()  {this->init();}
     
     inline void init() {
         double DX = (Problem::X_e-Problem::X_0)/Problem::N_e;
@@ -41,14 +43,16 @@ public:
             cell c(left_,right_);
            
             c.setCellValue(0.0);
-            cells.push_back(c);
+            this->push_back(c);
    
             }                
     }
+         
+    field_iterator begin() {return this->begin();}
+    field_iterator   end() {return   this->end();}
     
     void InitialCondition(){
-    
-        
+            
     }
     
     virtual ~field() {}
